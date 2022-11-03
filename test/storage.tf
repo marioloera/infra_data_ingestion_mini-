@@ -7,5 +7,3 @@ module "bucket_dataflow_temp" {
     format("serviceAccount:%s", google_service_account.svc_github_action_application_deployment.email),
   ]
 }
-
-
