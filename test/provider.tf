@@ -1,9 +1,9 @@
 provider "google" {
-  project = "trustly-data-services-test"
-  region  = "europe-west1"
+  project = "turing-app-367309"
+  region  = "europe-north1"
 }
 
 provider "google-beta" {
-  project = "trustly-data-services-test"
-  region  = "europe-west1"
+  project = "turing-app-367309"
+  region  = "europe-north1"
 }
