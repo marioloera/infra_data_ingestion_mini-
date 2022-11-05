@@ -18,17 +18,17 @@ terraform {
 }
 
 
-resource "google_service_account" "terraform_admin" {
-  account_id = "terraform-admin"
+resource "google_service_account" "svc_terraform_admin" {
+  account_id = "svc-terraform-admin"
 }
 
 
 resource "google_service_account_iam_binding" "svc_terraform_admin_owner" {
-  service_account_id = google_service_account.terraform_admin.name
+  service_account_id = google_service_account.svc_terraform_admin.name
   role               = "roles/owner"
 
   members = [
-    format("serviceAccount:%s", google_service_account.terraform_admin.email),
+    format("serviceAccount:%s", google_service_account.svc_terraform_admin.email),
   ]
 }
 
@@ -38,6 +38,6 @@ module "bucket_terraform_infra" {
 
   name = "terraform-infra"
   object_admin = [
-    format("serviceAccount:%s", google_service_account.terraform_admin.email),
+    format("serviceAccount:%s", google_service_account.svc_terraform_admin.email),
   ]
 }
