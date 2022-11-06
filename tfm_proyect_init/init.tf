@@ -23,13 +23,10 @@ resource "google_service_account" "svc_terraform_admin" {
 }
 
 
-resource "google_service_account_iam_binding" "svc_terraform_admin_owner" {
+resource "google_service_account_iam_member" "svc_terraform_admin_owner" {
   service_account_id = google_service_account.svc_terraform_admin.name
   role               = "roles/owner"
-
-  members = [
-    format("serviceAccount:%s", google_service_account.svc_terraform_admin.email),
-  ]
+  member             = format("serviceAccount:%s", google_service_account.svc_terraform_admin.email)
 }
 
 
