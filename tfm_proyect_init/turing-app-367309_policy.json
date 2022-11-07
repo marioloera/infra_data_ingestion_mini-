@@ -58,12 +58,12 @@
     },
     {
       "members": [
-        "serviceAccount:svc-terraform-admin@turing-app-367309.iam.gserviceaccount.com",
-        "user:mario.loera@paconsulting.com"
+        "serviceAccount:svc-application-deployment@turing-app-367309.iam.gserviceaccount.com",
+        "serviceAccount:svc-terraform-admin@turing-app-367309.iam.gserviceaccount.com"
       ],
       "role": "roles/storage.admin"
     }
   ],
-  "etag": "BwXs5fJtBfo=",
+  "etag": "BwXs5jjcVws=",
   "version": 1
 }
