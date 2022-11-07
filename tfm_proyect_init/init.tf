@@ -1,7 +1,7 @@
 # to initialize terraform in GCP create a terraform_admin service accout for terrafrom state storage bucket
 provider "google" {
   project = "turing-app-367309"
-  region  = "europe-north1"
+  region  = "europe-west1"
 }
 
 terraform {
@@ -23,13 +23,22 @@ resource "google_service_account" "svc_terraform_admin" {
 }
 
 
-resource "google_service_account_iam_member" "svc_terraform_admin_owner" {
+# resource "google_service_account_iam_member" "svc_terraform_admin_owner" {
+#   service_account_id = google_service_account.svc_terraform_admin.name
+#   role               = "roles/owner"
+#   #member             = format("serviceAccount:%s", google_service_account.svc_terraform_admin.email)
+#   member             = "serviceAccount:${google_service_account.svc_terraform_admin.email}"
+# }
+
+
+resource "google_service_account_iam_binding" "svc_terraform_admin_owner" {
   service_account_id = google_service_account.svc_terraform_admin.name
   role               = "roles/owner"
-  #member             = format("serviceAccount:%s", google_service_account.svc_terraform_admin.email)
-  member             = "serviceAccount:${google_service_account.svc_terraform_admin.email}"
+  members             = [
+    "user:mario.loera@paconsulting.com",
+    "serviceAccount:${google_service_account.svc_terraform_admin.email}",
+  ]
 }
-
 
 module "bucket_terraform_infra" {
   source = "../modules/bucket"
