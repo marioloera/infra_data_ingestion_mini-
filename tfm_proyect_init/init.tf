@@ -42,3 +42,8 @@ module "bucket_terraform_infra" {
     "serviceAccount:${google_service_account.svc_terraform_admin.email}",
   ]
 }
+
+
+resource "google_project_service" "cloudresourcemanager_api" {
+  service = "cloudresourcemanager.googleapis.com"
+}
