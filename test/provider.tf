@@ -1,9 +1,9 @@
 provider "google" {
-  project = "turing-app-367309"
-  region  = "europe-north1"
+  project = local.gcp_project
+  region  = local.gcp_region
 }
 
 provider "google-beta" {
-  project = "turing-app-367309"
-  region  = "europe-north1"
+  project = local.gcp_project
+  region  = local.gcp_region
 }

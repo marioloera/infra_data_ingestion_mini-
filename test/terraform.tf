@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "turing-app-367309-terraform-infra"
-    prefix = "tft/state"
+    bucket = local.terraform_state_bucket
+    prefix = local.terraform_state_bucket_prefix
   }
 }
