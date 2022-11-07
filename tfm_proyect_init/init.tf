@@ -31,6 +31,11 @@ resource "google_project_iam_member" "svc_terraform_admin_owner" {
   member  = "serviceAccount:${google_service_account.svc_terraform_admin.email}"
 }
 
+resource "google_project_iam_member" "svc_terraform_admin_storage_admin" {
+  project = data.google_project.current_project.id
+  role    = "roles/storage.admin"
+  member  = "serviceAccount:${google_service_account.svc_terraform_admin.email}"
+}
 
 
 module "bucket_terraform_infra" {
