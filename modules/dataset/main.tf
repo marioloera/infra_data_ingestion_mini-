@@ -19,7 +19,7 @@ data "google_iam_policy" "policy" {
   binding {
     role = "roles/bigquery.dataOwner"
     members = concat(
-      [format("serviceAccount:terraform-admin@%s.iam.gserviceaccount.com", data.google_project.current_project.project_id)],
+      ["serviceAccount:${local.svc_terraform_admin}"],
       var.data_owners
     )
   }
