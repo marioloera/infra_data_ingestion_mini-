@@ -45,7 +45,6 @@ resource "google_project_iam_binding" "dataflow_admin" {
   project = data.google_project.current_project.id
   role    = "roles/dataflow.admin"
   members = [
-    format("serviceAccount:%s", google_service_account.svc_composer_worker.email),
     format("serviceAccount:%s", google_service_account.svc_github_action_application_deployment.email),
   ]
 }

@@ -16,7 +16,7 @@ module "data_pipeline" {
 
   project                            = data.google_project.current_project.id
   dataflow_worker                    = google_service_account.svc_dataflow_worker.email
-  schema_registry_svc_account        = google_service_account.svc_github_action_avro_schema_registry.email
+  schema_registry_svc_account        = google_service_account.svc_github_action_application_deployment.email
   schema_registry_bucket             = "turing-app-367309-avro-schema-store-sysint"
   application_deployment_svc_account = google_service_account.svc_github_action_application_deployment.email
   datalake_avro_bucket               = "turing-app-367309-data-lake-avro"
@@ -32,10 +32,4 @@ module "data_pipeline" {
   schema_viewers = [
 
   ]
-}
-
-resource "google_pubsub_topic_iam_member" "phoenix_analytics_avro_viewer_tech" {
-  topic  = module.data_pipeline.topic_name
-  role   = "roles/viewer"
-  member = "group:team.tech@trustly.com"
 }
