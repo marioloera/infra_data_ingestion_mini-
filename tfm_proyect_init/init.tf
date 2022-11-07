@@ -26,7 +26,8 @@ resource "google_service_account" "svc_terraform_admin" {
 resource "google_service_account_iam_member" "svc_terraform_admin_owner" {
   service_account_id = google_service_account.svc_terraform_admin.name
   role               = "roles/owner"
-  member             = format("serviceAccount:%s", google_service_account.svc_terraform_admin.email)
+  #member             = format("serviceAccount:%s", google_service_account.svc_terraform_admin.email)
+  member             = "serviceAccount:${google_service_account.svc_terraform_admin.email}"
 }
 
 
@@ -35,6 +36,7 @@ module "bucket_terraform_infra" {
 
   name = "terraform-infra"
   object_admin = [
-    format("serviceAccount:%s", google_service_account.svc_terraform_admin.email),
+    # format("serviceAccount:%s", google_service_account.svc_terraform_admin.email),
+    "serviceAccount:${google_service_account.svc_terraform_admin.email}",
   ]
 }
