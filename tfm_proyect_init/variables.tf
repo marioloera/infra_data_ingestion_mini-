@@ -10,20 +10,12 @@ variable "_svc_terraform_admin_name_" {
   default     = "svc-terraform-admin"
 }
 
-variable "_terraform_state_bucket_name_" {
-  description = "Name of terraform state bucket"
-  type        = string
-  default     = "terraform-infra"
-}
-
 
 locals {
   gcp_project = var._gcp_project_
   gcp_region  = "europe-west1"
 
-  terraform_state_bucket_name   = var._terraform_state_bucket_name_
-  terraform_state_bucket        = "${var._gcp_project_}-${var._terraform_state_bucket_name_}"
-  terraform_state_bucket_prefix = "tft/state"
+  terraform_state_bucket_name = "terraform-infra"
 
   svc_terraform_admin_name = var._svc_terraform_admin_name_
   svc_terraform_admin      = "${var._svc_terraform_admin_name_}@${var._gcp_project_}.iam.gserviceaccount.com"
