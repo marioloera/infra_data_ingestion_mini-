@@ -1,0 +1,26 @@
+{
+  "bindings": [
+    {
+      "members": [
+        "serviceAccount:svc-cicd-tmp@turing-app-367309.iam.gserviceaccount.com",
+        "serviceAccount:svc-terraform-admin@turing-app-367309.iam.gserviceaccount.com",
+        "user:mario.loera@paconsulting.com"
+      ],
+      "role": "roles/owner"
+    },
+    {
+      "members": [
+        "serviceAccount:service-502528402775@gcp-sa-pubsub.iam.gserviceaccount.com"
+      ],
+      "role": "roles/pubsub.serviceAgent"
+    },
+    {
+      "members": [
+        "user:mario.loera@paconsulting.com"
+      ],
+      "role": "roles/storage.admin"
+    }
+  ],
+  "etag": "BwXs4UIPaLI=",
+  "version": 1
+}
