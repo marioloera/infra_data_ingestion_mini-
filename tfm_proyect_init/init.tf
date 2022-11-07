@@ -17,28 +17,21 @@ terraform {
 
 }
 
+data "google_project" "current_project" {
+}
 
 resource "google_service_account" "svc_terraform_admin" {
   account_id = "svc-terraform-admin"
 }
 
 
-# resource "google_service_account_iam_member" "svc_terraform_admin_owner" {
-#   service_account_id = google_service_account.svc_terraform_admin.name
-#   role               = "roles/owner"
-#   #member             = format("serviceAccount:%s", google_service_account.svc_terraform_admin.email)
-#   member             = "serviceAccount:${google_service_account.svc_terraform_admin.email}"
-# }
-
-
-resource "google_service_account_iam_binding" "svc_terraform_admin_owner" {
-  service_account_id = google_service_account.svc_terraform_admin.name
-  role               = "roles/owner"
-  members             = [
-    "user:mario.loera@paconsulting.com",
-    "serviceAccount:${google_service_account.svc_terraform_admin.email}",
-  ]
+resource "google_project_iam_member" "svc_terraform_admin_owner" {
+  project = data.google_project.current_project.id
+  role    = "roles/owner"
+  member  = "serviceAccount:${google_service_account.svc_terraform_admin.email}"
 }
+
+
 
 module "bucket_terraform_infra" {
   source = "../modules/bucket"
