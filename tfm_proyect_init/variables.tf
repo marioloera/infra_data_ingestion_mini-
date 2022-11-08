@@ -1,7 +1,7 @@
 variable "_gcp_project_" {
   description = "Name of gcp project"
   type        = string
-  default     = "pa-cons-swe-de-2022-mll02"
+  default     = "turing-app-367309"
 }
 
 variable "_svc_terraform_admin_name_" {
