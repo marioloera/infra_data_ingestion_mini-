@@ -1,6 +1,7 @@
 terraform {
   backend "gcs" {
-    bucket = "turing-app-367309-terraform-infra" # TODO MANUALLY
+    # TODO MANUALLY change the bucket
+    bucket = "pa-cons-swe-de-2022-mll01-terraform-infra"
     prefix = "tft/state"
   }
 }
