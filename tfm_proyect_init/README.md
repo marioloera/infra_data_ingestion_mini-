@@ -13,7 +13,9 @@ terraform apply
 
 ## make a link in the variables file to re-use
 ```
-ln tfm_proyect_init/variables.tf test/variables_hardlink.tf
+ln tfm_proyect_init/variables.tf test/variables.tf
+
+ln tfm_proyect_init/terraform.tfvars test/terraform.tfvars
 ```
 
 ## get the iam policy in json format
@@ -56,3 +58,10 @@ gcloud auth revoke $SVC_FULL_NAME
 
 ## Github key
 add the conttent of the json key in a **secret.TF_ADMIN_KEY_TEST**
+
+
+## re auth with gcloud to the new project
+```
+PROJECT_ID=pa-cons-swe-de-2022-mll01
+gcloud auth application-default login --project $PROJECT
+```
