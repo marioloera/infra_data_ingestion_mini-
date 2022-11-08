@@ -18,3 +18,8 @@ resource "google_service_account" "svc_github_action_application_deployment" {
 resource "google_service_account" "svc_data_lake_producer" {
   account_id = "svc-data-lake-producer"
 }
+
+
+resource "google_service_account" "svc_tmp_01" {
+  account_id = "svc-tmp-01"
+}
