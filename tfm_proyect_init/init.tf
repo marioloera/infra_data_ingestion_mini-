@@ -60,17 +60,33 @@ resource "google_project_iam_binding" "storage_admin" {
 }
 
 # *********************** STORAGE ***********************
-module "bucket_terraform_infra" {
-  source = "../modules/bucket"
-
-  name        = local.terraform_state_bucket_name
-  gcp_project = local.gcp_project
-  object_admin = [
-    "user:${local.main_user}",
-    "serviceAccount:${google_service_account.svc_terraform_admin.email}",
-  ]
+resource "google_storage_bucket" "bucket_terraform_infra" {
+  name                        = "${local.gcp_project}-${local.terraform_state_bucket_name}"
+  project                     = local.gcp_project
+  location                    = "EU"
+  force_destroy               = true
+  uniform_bucket_level_access = true
+  requester_pays              = true
+  versioning {
+    enabled = true
+  }
 
   depends_on = [
     google_project_iam_binding.storage_admin,
   ]
+}
+
+data "google_iam_policy" "bucket_terraform_infra_policy" {
+  binding {
+    role = "roles/storage.objectAdmin"
+    members = [
+      "user:${local.main_user}",
+      "serviceAccount:${google_service_account.svc_terraform_admin.email}",
+    ]
+  }
+}
+
+resource "google_storage_bucket_iam_policy" "bucket_terraform_infra_policy_mapping" {
+  bucket      = google_storage_bucket.bucket_terraform_infra.name
+  policy_data = data.google_iam_policy.bucket_terraform_infra_policy.policy_data
 }
