@@ -17,11 +17,11 @@ module "data_pipeline" {
   project                            = data.google_project.current_project.id
   dataflow_worker                    = google_service_account.svc_dataflow_worker.email
   schema_registry_svc_account        = google_service_account.svc_github_action_application_deployment.email
-  schema_registry_bucket             = "turing-app-367309-avro-schema-store-sysint"
+  schema_registry_bucket             = "${data.google_project.current_project.id}-avro-schema-store-sysint"
   application_deployment_svc_account = google_service_account.svc_github_action_application_deployment.email
-  datalake_avro_bucket               = "turing-app-367309-data-lake-avro"
-  unprocessed_bucket                 = "turing-app-367309-beam-pubsub-unprocessed-sysint"
-  dataflow_temp_bucket               = "turing-app-367309-dataflow-temp-sysint"
+  datalake_avro_bucket               = "${data.google_project.current_project.id}-data-lake-avro"
+  unprocessed_bucket                 = "${data.google_project.current_project.id}-beam-pubsub-unprocessed-sysint"
+  dataflow_temp_bucket               = "${data.google_project.current_project.id}-dataflow-temp-sysint"
   datalake_dataset                   = "data_lake_sysint"
   pubsub_publishers = [
 
