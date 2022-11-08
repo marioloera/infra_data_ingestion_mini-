@@ -48,7 +48,7 @@ resource "google_project_iam_binding" "storage_admin" {
   role    = "roles/storage.admin"
   members = [
     "user:${local.main_user}",
-    "serviceAccount:${local.svc_terraform_admin}",
+    "serviceAccount:${google_service_account.svc_terraform_admin.email}",
   ]
 }
 
