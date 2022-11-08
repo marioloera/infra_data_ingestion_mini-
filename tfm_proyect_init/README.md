@@ -63,5 +63,5 @@ add the conttent of the json key in a **secret.TF_ADMIN_KEY_TEST**
 ## re auth with gcloud to the new project
 ```
 PROJECT_ID=pa-cons-swe-de-2022-mll03
-gcloud auth application-default login --project $PROJECT
+gcloud auth application-default login --project $PROJECT_ID
 ```
