@@ -1,9 +1,7 @@
 module "bucket_dataflow_temp" {
   source = "../modules/bucket"
 
-
-  name        = "dataflow-temp"
-  gcp_project = data.google_project.current_project.id
+  name = "dataflow-temp"
 
   object_admin = [
     format("serviceAccount:%s", google_service_account.svc_dataflow_worker.email),
