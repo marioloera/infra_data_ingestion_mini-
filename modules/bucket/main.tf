@@ -1,11 +1,14 @@
-data "google_project" "current_project" {
-}
+# data "google_project" "current_project" {
+# }
 
 resource "google_storage_bucket" "bucket" {
   # Prefix the name with the project id as bucket names have to be globally unique
-  name                        = format("%s-%s", data.google_project.current_project.project_id, var.name)
+  #name                        = format("%s-%s", data.google_project.current_project.project_id, var.name)
+  name                        = "${var.gcp_project}-${var.name}"
   location                    = "EU"
   uniform_bucket_level_access = true
+  project                     = var.gcp_project
+
 
   # The use of a dynamic block here is a bit weird but I can't find a better way to solve it
   dynamic "lifecycle_rule" {
