@@ -49,5 +49,10 @@ gcloud auth list
 
 ```
 
+when is time to clean the svd
+```
+gcloud auth revoke $SVC_FULL_NAME
+```
+
 ## Github key
 add the conttent of the json key in a **secret.TF_ADMIN_KEY_TEST**
