@@ -66,6 +66,11 @@ module "bucket_terraform_infra" {
   name        = local.terraform_state_bucket_name
   gcp_project = local.gcp_project
   object_admin = [
+    "user:${local.main_user}",
     "serviceAccount:${google_service_account.svc_terraform_admin.email}",
+  ]
+
+  depends_on = [
+    google_project_iam_binding.storage_admin,
   ]
 }
