@@ -22,7 +22,7 @@ ln tfm_proyect_init/terraform.tfvars test/terraform.tfvars
 ```
 source /usr/local/bin/google-cloud-sdk/path.zsh.inc
 
-PROJECT_ID=pa-cons-swe-de-2022-mll01
+PROJECT_ID=pa-cons-swe-de-2022-mll03
 POLICY_FILE="${PROJECT_ID}_policy.json"
 gcloud projects get-iam-policy $PROJECT_ID --format json > $POLICY_FILE
 ```
@@ -33,7 +33,7 @@ download a json key for the svc-terrafrom-admin
 ```
 source /usr/local/bin/google-cloud-sdk/path.zsh.inc
 
-PROJECT_ID=pa-cons-swe-de-2022-mll01
+PROJECT_ID=pa-cons-swe-de-2022-mll03
 SVC_NAME=svc-terraform-admin
 KEYS_DIR=/Users/Mario.Loera/code/gcp_keys
 
@@ -62,6 +62,6 @@ add the conttent of the json key in a **secret.TF_ADMIN_KEY_TEST**
 
 ## re auth with gcloud to the new project
 ```
-PROJECT_ID=pa-cons-swe-de-2022-mll01
+PROJECT_ID=pa-cons-swe-de-2022-mll03
 gcloud auth application-default login --project $PROJECT
 ```
