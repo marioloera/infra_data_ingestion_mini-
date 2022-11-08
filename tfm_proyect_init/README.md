@@ -18,14 +18,35 @@ ln tfm_proyect_init/variables.tf test/variables.tf
 
 ## get the iam policy in json format
 ```
-gcloud projects get-iam-policy turing-app-367309 --format json > turing-app-367309_policy.json
+source /usr/local/bin/google-cloud-sdk/path.zsh.inc
+
+PROJECT_ID=turing-app-367309
+POLICY_FILE="${PROJECT_ID}_policy.json"
+gcloud projects get-iam-policy $PROJECT_ID --format json > $POLICY_FILE
 ```
 
 ## after terraform apply
 download a json key for the svc-terrafrom-admin
 
 ```
-gcloud auth activate-service-account --key-file=/Users/Mario.Loera/code/gcp_keys/svc-terraform-admin@turing-app-367309.json
+source /usr/local/bin/google-cloud-sdk/path.zsh.inc
+
+PROJECT_ID=pa-cons-swe-de-2022-mll02
+SVC_NAME=svc-terraform-admin
+KEYS_DIR=/Users/Mario.Loera/code/gcp_keys
+
+KEY_FILE="${KEYS_DIR}/${SVC_NAME}_${PROJECT_ID}.json"
+SVC_FULL_NAME="${SVC_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
+
+echo KEY_FILE $KEY_FILE
+echo SVC_FULL_NAME $SVC_FULL_NAME
+
+gcloud iam service-accounts keys create $KEY_FILE --iam-account=$SVC_FULL_NAME
+
+gcloud auth activate-service-account --key-file=$KEY_FILE
+
+gcloud auth list
+
 ```
 
 ## Github key
