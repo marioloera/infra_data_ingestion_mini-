@@ -13,7 +13,7 @@ terraform apply
 
 ## make a link in the variables file to re-use
 ```
-ln tfm_proyect_init/variables.tf test/variables.tf
+ln tfm_proyect_init/variables.tf test/variables_hardlink.tf
 ```
 
 ## get the iam policy in json format
