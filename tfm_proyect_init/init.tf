@@ -29,16 +29,6 @@ resource "google_project" "my_project" {
 # data "google_project" "current_project" {
 # }
 
-
-# *********************** API ***********************
-resource "google_project_service" "cloudresourcemanager_api" {
-  service = "cloudresourcemanager.googleapis.com"
-}
-
-resource "google_project_service" "serviceusage_api" {
-  service = "serviceusage.googleapis.com"
-}
-
 # *********************** SERVICE ACCOUNT ***********************
 resource "google_service_account" "svc_terraform_admin" {
   account_id = local.svc_terraform_admin_name
