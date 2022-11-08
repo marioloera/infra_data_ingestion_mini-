@@ -24,6 +24,7 @@ resource "google_project_iam_binding" "storage_admin" {
   project = data.google_project.current_project.id
   role    = "roles/storage.admin"
   members = [
+    "user:${local.main_user}",
     "serviceAccount:${local.svc_terraform_admin}",
     "serviceAccount:${google_service_account.svc_github_action_application_deployment.email}", # CI for data ingestion pipeline
   ]
