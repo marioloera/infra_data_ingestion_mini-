@@ -17,6 +17,7 @@ terraform {
 
 }
 
+# *********************** GCP PROJECT ***********************
 
 resource "google_project" "my_project" {
   name            = local.gcp_project_name # Name of the GCP project ID. Changing this forces a new project to be created.
@@ -29,33 +30,36 @@ resource "google_project" "my_project" {
 # }
 
 
-
+# *********************** API ***********************
 resource "google_project_service" "cloudresourcemanager_api" {
   service = "cloudresourcemanager.googleapis.com"
 }
 
 
-
+# *********************** SERVICE ACCOUNT ***********************
 resource "google_service_account" "svc_terraform_admin" {
   account_id = local.svc_terraform_admin_name
 }
 
 
+# *********************** PROJECT POLICIES ***********************
 resource "google_project_iam_member" "svc_terraform_admin_owner" {
-  #project = data.google_project.current_project.id
   project = local.gcp_project
   role    = "roles/owner"
   member  = "serviceAccount:${google_service_account.svc_terraform_admin.email}"
 }
 
-resource "google_project_iam_member" "svc_terraform_admin_storage_admin" {
+resource "google_project_iam_binding" "storage_admin" {
   #project = data.google_project.current_project.id
   project = local.gcp_project
   role    = "roles/storage.admin"
-  member  = "serviceAccount:${google_service_account.svc_terraform_admin.email}"
+  members = [
+    "user:${local.main_user}",
+    "serviceAccount:${local.svc_terraform_admin}",
+  ]
 }
 
-
+# *********************** STORAGE ***********************
 module "bucket_terraform_infra" {
   source = "../modules/bucket"
 

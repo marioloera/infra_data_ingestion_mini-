@@ -12,6 +12,8 @@ variable "_svc_terraform_admin_name_" {
 
 
 locals {
+  main_user = "mario.loera@paconsulting.com" # user who will deploy the first poyect
+
   organization_id = "133988432162" # PA Consulting
   billing_account = "01D520-0234E5-B62010"
 
