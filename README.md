@@ -17,6 +17,7 @@ Make sure that you install the packages
 ```
 python3 -m venv venv
 make install
+pre-commit install
 ```
 
 To have same code formate use:
