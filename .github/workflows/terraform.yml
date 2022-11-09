@@ -61,7 +61,7 @@ jobs:
         echo "##[name=summary;]$(cat plan-output.txt | grep "Plan:\|No changes." | sed "s/Plan://")" >> $GITHUB_OUTPUT
 
     - name: comment on PR
-      uses: actions/github-script@0.9.0
+      uses: actions/github-script@v6
       if: github.event_name == 'pull_request'
       env:
         PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
@@ -81,7 +81,7 @@ jobs:
 
           *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Status: \`${{ steps.plan.outcome }}\`*`;
 
-          github.issues.createComment({
+          github.rest.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
