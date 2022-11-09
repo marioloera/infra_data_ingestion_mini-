@@ -25,11 +25,11 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     # Install the specified version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
+      uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: ${{ env.TERRAFORM_VER }}
 
@@ -58,7 +58,7 @@ jobs:
     - name: Get Plan summary
       id: summary
       run: |
-        echo "##[set-output name=summary;]$(cat plan-output.txt | grep "Plan:\|No changes." | sed "s/Plan://")"
+        echo "##[name=summary;]$(cat plan-output.txt | grep "Plan:\|No changes." | sed "s/Plan://")" >> $GITHUB_OUTPUT
 
     - name: comment on PR
       uses: actions/github-script@0.9.0
