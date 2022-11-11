@@ -1,0 +1,77 @@
+{
+  "bindings": [
+    {
+      "members": [
+        "serviceAccount:service-127052457882@compute-system.iam.gserviceaccount.com"
+      ],
+      "role": "roles/compute.serviceAgent"
+    },
+    {
+      "members": [
+        "serviceAccount:svc-application-deployment@pa-cons-swe-de-2022-mll03.iam.gserviceaccount.com"
+      ],
+      "role": "roles/dataflow.admin"
+    },
+    {
+      "members": [
+        "serviceAccount:service-127052457882@dataflow-service-producer-prod.iam.gserviceaccount.com"
+      ],
+      "role": "roles/dataflow.serviceAgent"
+    },
+    {
+      "members": [
+        "serviceAccount:svc-application-deployment@pa-cons-swe-de-2022-mll03.iam.gserviceaccount.com",
+        "serviceAccount:svc-dataflow-worker@pa-cons-swe-de-2022-mll03.iam.gserviceaccount.com"
+      ],
+      "role": "roles/dataflow.worker"
+    },
+    {
+      "members": [
+        "serviceAccount:127052457882-compute@developer.gserviceaccount.com",
+        "serviceAccount:127052457882@cloudservices.gserviceaccount.com"
+      ],
+      "role": "roles/editor"
+    },
+    {
+      "members": [
+        "serviceAccount:service-127052457882@cloud-ml.google.com.iam.gserviceaccount.com"
+      ],
+      "role": "roles/ml.serviceAgent"
+    },
+    {
+      "members": [
+        "serviceAccount:svc-terraform-admin@pa-cons-swe-de-2022-mll03.iam.gserviceaccount.com",
+        "user:mario.loera@paconsulting.com"
+      ],
+      "role": "roles/owner"
+    },
+    {
+      "members": [
+        "serviceAccount:svc-application-deployment@pa-cons-swe-de-2022-mll03.iam.gserviceaccount.com"
+      ],
+      "role": "roles/pubsub.editor"
+    },
+    {
+      "members": [
+        "serviceAccount:service-127052457882@gcp-sa-pubsub.iam.gserviceaccount.com"
+      ],
+      "role": "roles/pubsub.serviceAgent"
+    },
+    {
+      "members": [
+        "serviceAccount:svc-application-deployment@pa-cons-swe-de-2022-mll03.iam.gserviceaccount.com"
+      ],
+      "role": "roles/secretmanager.admin"
+    },
+    {
+      "members": [
+        "serviceAccount:svc-application-deployment@pa-cons-swe-de-2022-mll03.iam.gserviceaccount.com",
+        "serviceAccount:svc-terraform-admin@pa-cons-swe-de-2022-mll03.iam.gserviceaccount.com",
+        "user:mario.loera@paconsulting.com"
+      ],
+      "role": "roles/storage.admin"
+    }
+  ],
+  "etag": "BwXtMz5SH90=",
+  "version": 1
+}
