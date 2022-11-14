@@ -25,7 +25,7 @@ resource "google_project_iam_member" "svc_github_storage_admin" {
   project = data.google_project.current_project.id
   role    = "roles/storage.admin"
   # CI for data ingestion pipeline
-  member = "serviceAccount:${google_service_account.svc_github_action_application_deployment.email}"
+  member = "serviceAccount:${google_service_account.svc_application_deployment.email}"
 }
 
 
@@ -34,7 +34,7 @@ resource "google_project_iam_binding" "dataflow_admin" {
   project = data.google_project.current_project.id
   role    = "roles/dataflow.admin"
   members = [
-    format("serviceAccount:%s", google_service_account.svc_github_action_application_deployment.email),
+    format("serviceAccount:%s", google_service_account.svc_application_deployment.email),
   ]
 }
 
@@ -42,7 +42,8 @@ resource "google_project_iam_binding" "dataflow_worker" {
   project = data.google_project.current_project.id
   role    = "roles/dataflow.worker"
   members = [
-    format("serviceAccount:%s", google_service_account.svc_dataflow_worker.email)
+    format("serviceAccount:%s", google_service_account.svc_application_deployment.email),
+    format("serviceAccount:%s", google_service_account.svc_dataflow_worker.email),
   ]
 }
 
@@ -51,7 +52,7 @@ resource "google_project_iam_binding" "secretmanager_admin" {
   project = data.google_project.current_project.id
   role    = "roles/secretmanager.admin"
   members = [
-    format("serviceAccount:%s", google_service_account.svc_github_action_application_deployment.email)
+    format("serviceAccount:%s", google_service_account.svc_application_deployment.email)
   ]
 }
 
@@ -62,6 +63,6 @@ resource "google_project_iam_binding" "pubsub_editor" {
   project = data.google_project.current_project.id
   role    = "roles/pubsub.editor"
   members = [
-    format("serviceAccount:%s", google_service_account.svc_github_action_application_deployment.email), # CI for data ingestion pipeline
+    format("serviceAccount:%s", google_service_account.svc_application_deployment.email), # CI for data ingestion pipeline
   ]
 }

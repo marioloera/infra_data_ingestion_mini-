@@ -16,9 +16,9 @@
 
 #   project                            = data.google_project.current_project.id
 #   dataflow_worker                    = google_service_account.svc_dataflow_worker.email
-#   schema_registry_svc_account        = google_service_account.svc_github_action_application_deployment.email
+#   schema_registry_svc_account        = google_service_account.svc_application_deployment.email
 #   schema_registry_bucket             = "${data.google_project.current_project.project_id}-avro-schema-store-sysint"
-#   application_deployment_svc_account = google_service_account.svc_github_action_application_deployment.email
+#   application_deployment_svc_account = google_service_account.svc_application_deployment.email
 #   datalake_avro_bucket               = "${data.google_project.current_project.project_id}-data-lake-avro"
 #   unprocessed_bucket                 = "${data.google_project.current_project.project_id}-beam-pubsub-unprocessed-sysint"
 #   dataflow_temp_bucket               = "${data.google_project.current_project.project_id}-dataflow-temp-sysint"

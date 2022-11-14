@@ -6,6 +6,6 @@ resource "google_service_account_iam_binding" "svc_dataflow_worker_user" {
   role               = "roles/iam.serviceAccountUser"
 
   members = [
-    format("serviceAccount:%s", google_service_account.svc_github_action_application_deployment.email),
+    format("serviceAccount:%s", google_service_account.svc_application_deployment.email),
   ]
 }

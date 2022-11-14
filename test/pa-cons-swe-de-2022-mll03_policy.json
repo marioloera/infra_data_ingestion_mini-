@@ -20,6 +20,7 @@
     },
     {
       "members": [
+        "serviceAccount:svc-application-deployment@pa-cons-swe-de-2022-mll03.iam.gserviceaccount.com",
         "serviceAccount:svc-dataflow-worker@pa-cons-swe-de-2022-mll03.iam.gserviceaccount.com"
       ],
       "role": "roles/dataflow.worker"
@@ -71,6 +72,6 @@
       "role": "roles/storage.admin"
     }
   ],
-  "etag": "BwXtNFl8Q5I=",
+  "etag": "BwXtbMylqo4=",
   "version": 1
 }
