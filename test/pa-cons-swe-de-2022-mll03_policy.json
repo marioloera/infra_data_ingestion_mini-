@@ -34,6 +34,12 @@
     },
     {
       "members": [
+        "serviceAccount:svc-application-deployment@pa-cons-swe-de-2022-mll03.iam.gserviceaccount.com"
+      ],
+      "role": "roles/iam.serviceAccountUser"
+    },
+    {
+      "members": [
         "serviceAccount:service-127052457882@cloud-ml.google.com.iam.gserviceaccount.com"
       ],
       "role": "roles/ml.serviceAgent"
@@ -72,6 +78,6 @@
       "role": "roles/storage.admin"
     }
   ],
-  "etag": "BwXtbRKOA5I=",
+  "etag": "BwXtbi9zLuM=",
   "version": 1
 }
